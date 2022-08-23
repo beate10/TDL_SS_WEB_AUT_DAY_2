@@ -105,7 +105,7 @@ context("Elements Page", () => {
       WebTablesPage.visit();
     });
 
-    it.only("Web Tables Test", () => {
+    it.only("Web Tables Test Scenario 1", () => {
 
       // Create WebTables page object
       // Create scenario 1:
@@ -131,11 +131,21 @@ context("Elements Page", () => {
     });
 
 
+    it.only("Web Tables Test Scenario 2", () => {
+      // Create Scenario 2:
+      // Delete all table rows
+      // Validate that we see text - No rows found
+
+
+      WebTablesPage.deleteRows.each((val, id, coll) => {
+        WebTablesPage.getDeleteButton(id+1).click();
+      });
+
+
+      WebTablesPage.messageBar.should("contain", "No rows found");
     
 
-    // Create Scenario 2:
-    // Delete all table rows
-    // Validate that we see text - No rows found
+    
   });
 
   context("Buttons scenarios", () => {
@@ -149,4 +159,8 @@ context("Elements Page", () => {
     // Do dynamic click
     // Validate dynamic click message
   });
+
+});
+
+
 });

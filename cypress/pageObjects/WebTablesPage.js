@@ -47,6 +47,10 @@ class WebTablesPage extends BasePage{
     }
 
 
+    static get deleteRows(){
+        return cy.get('[title="Delete"]');
+    }
+
     static get tableRows(){
         return cy.get('.rt-tr-group');
     }
@@ -55,6 +59,15 @@ class WebTablesPage extends BasePage{
     static get firstRow(){
         return this.tableRows.eq(0);
 
+    }
+
+
+    static getDeleteButton(id){
+        return cy.get(`#delete-record-${id}`);
+    }
+
+    static get messageBar(){
+        return cy.get('.rt-noData');
     }
 
 
