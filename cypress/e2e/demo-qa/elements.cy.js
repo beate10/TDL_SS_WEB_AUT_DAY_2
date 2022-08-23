@@ -35,7 +35,7 @@ context("Elements Page", () => {
       CheckBoxPage.visit();
     });
 
-    it.only ("Testing Check Boxes", () => {
+    it ("Testing Check Boxes Scenario 1" , () => {
       CheckBoxPage.expandButton.click();
       CheckBoxPage.notesSelection.click();
       CheckBoxPage.reactSelection.click();
@@ -56,6 +56,18 @@ context("Elements Page", () => {
     // Click expand button
     // Click Office
     // Validate the checked checkboxes
+
+
+    it.only ("Testing Check Boxes Scenario 2" , () => {
+      CheckBoxPage.expandButton.click();
+      CheckBoxPage.officeSelection.click();
+
+      ["office", "public","private", "classified", "general"].forEach (selection =>{
+        CheckBoxPage.result.should("contain", selection);
+      })
+    });
+
+
   });
 
   context("Radio button scenarios", () => {

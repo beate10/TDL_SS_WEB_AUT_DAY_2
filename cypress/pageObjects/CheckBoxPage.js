@@ -38,6 +38,10 @@ class CheckBoxPage extends BasePage{
     }
 
 
+    static get officeSelection() {
+        return cy.get('[for="tree-node-office"]');
+    }
+
     
 
     
