@@ -9,8 +9,17 @@ context("Elements Page", () => {
     // Create texbox scenario
     // fill in textboxes with necessary information
     // validate the paragraphs
-    it("Filling in Text Boxes", () => {
+    it.only("Filling in Text Boxes", () => {
       // add the necessary steps
+      TextBoxPage.nameField.type("Kim Kardashian");
+      TextBoxPage.emailField.type("kim@kardashian.com");
+      TextBoxPage.currentAddressField.type("Kr.Valdemara iela 8");
+      TextBoxPage.permanentAddressField.type("Hollywood");
+      TextBoxPage.submitButton.click();
+      TextBoxPage.nameDisplay.should("contain", "Kim Kardashian");
+      TextBoxPage.emailDisplay.should("contain", "kim@kardashian.com");
+      TextBoxPage.currentAddressDisplay.should("contain", "Kr.Valdemara iela 8");
+      TextBoxPage.permanentAddressDisplay.should("contain", "Hollywood");
     });
   });
 
