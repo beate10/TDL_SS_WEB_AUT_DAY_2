@@ -1,3 +1,4 @@
+import CheckBoxPage from "../../pageObjects/CheckBoxPage";
 import TextBoxPage from "../../pageObjects/textBoxPage";
 
 context("Elements Page", () => {
@@ -9,7 +10,7 @@ context("Elements Page", () => {
     // Create texbox scenario
     // fill in textboxes with necessary information
     // validate the paragraphs
-    it.only("Filling in Text Boxes", () => {
+    it("Filling in Text Boxes", () => {
       // add the necessary steps
       TextBoxPage.nameField.type("Kim Kardashian");
       TextBoxPage.emailField.type("kim@kardashian.com");
@@ -29,6 +30,27 @@ context("Elements Page", () => {
     // Click the "+"/expand button
     // Click Notes, React, Angular, General, Excel File.doc
     // Validate the clicked checkboxes
+
+    beforeEach(() => {
+      CheckBoxPage.visit();
+    });
+
+    it.only ("Testing Check Boxes", () => {
+      CheckBoxPage.expandButton.click();
+      CheckBoxPage.notesSelection.click();
+      CheckBoxPage.reactSelection.click();
+      CheckBoxPage.angularSelection.click();
+      CheckBoxPage.generalSelection.click();
+      CheckBoxPage.excelSelection.click();
+
+      ["notes", "react","angular", "general", "excelFile"].forEach (selection =>{
+        CheckBoxPage.result.should("contain", selection);
+      })
+      
+
+    })
+    
+
 
     // Create checkbox scenario 2:
     // Click expand button
