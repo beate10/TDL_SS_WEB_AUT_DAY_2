@@ -1,4 +1,5 @@
 import CheckBoxPage from "../../pageObjects/CheckBoxPage";
+import RadioButtonsPage from "../../pageObjects/RadioButtonsPage";
 import TextBoxPage from "../../pageObjects/textBoxPage";
 
 context("Elements Page", () => {
@@ -58,7 +59,7 @@ context("Elements Page", () => {
     // Validate the checked checkboxes
 
 
-    it.only ("Testing Check Boxes Scenario 2" , () => {
+    it ("Testing Check Boxes Scenario 2" , () => {
       CheckBoxPage.expandButton.click();
       CheckBoxPage.officeSelection.click();
 
@@ -71,6 +72,10 @@ context("Elements Page", () => {
   });
 
   context("Radio button scenarios", () => {
+
+    beforeEach(() => {
+      RadioButtonsPage.visit();
+    });
     // Create RadioButtons page object
     // Scenario 1:
     // Click yesButton
@@ -78,6 +83,18 @@ context("Elements Page", () => {
     // click impressiveButton
     // validate the message
     // noButton - validate that the button exists but is disabled
+
+
+    it.only ("Radio Button Test", () => {
+      RadioButtonsPage.yesButton.click();
+      RadioButtonsPage.message.should("contain", "Yes");
+
+      RadioButtonsPage.impressiveButton.click();
+      RadioButtonsPage.message.should("contain", "Impressive");
+
+      RadioButtonsPage.noButton.should("to.exist");
+      RadioButtonsPage.noButton.should("be.disabled");
+    })
   });
 
   context("Web tables scenarios", () => {
