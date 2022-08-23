@@ -1,3 +1,4 @@
+import ButtonsPage from "../../pageObjects/ButtonsPage";
 import CheckBoxPage from "../../pageObjects/CheckBoxPage";
 import RadioButtonsPage from "../../pageObjects/RadioButtonsPage";
 import TextBoxPage from "../../pageObjects/textBoxPage";
@@ -105,7 +106,7 @@ context("Elements Page", () => {
       WebTablesPage.visit();
     });
 
-    it.only("Web Tables Test Scenario 1", () => {
+    it("Web Tables Test Scenario 1", () => {
 
       // Create WebTables page object
       // Create scenario 1:
@@ -131,7 +132,7 @@ context("Elements Page", () => {
     });
 
 
-    it.only("Web Tables Test Scenario 2", () => {
+    it("Web Tables Test Scenario 2", () => {
       // Create Scenario 2:
       // Delete all table rows
       // Validate that we see text - No rows found
@@ -158,6 +159,19 @@ context("Elements Page", () => {
     // Validate the right click message
     // Do dynamic click
     // Validate dynamic click message
+
+    beforeEach(() => {
+      ButtonsPage.visit();
+    });
+
+    it.only("Buttons test", () => {
+      ButtonsPage.doubleClickButton.dblclick();
+      ButtonsPage.doubleMessage.should("have.text", "You have done a double click");
+      ButtonsPage.rightClickButton.rightclick();
+      ButtonsPage.rightClickMessage.should("have.text", "You have done a right click");
+      ButtonsPage.clickMeButton.click();
+      ButtonsPage.dynamicClickMessage.should("have.text", "You have done a dynamic click");
+    })
   });
 
 });
