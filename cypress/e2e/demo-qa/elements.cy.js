@@ -1,6 +1,7 @@
 import CheckBoxPage from "../../pageObjects/CheckBoxPage";
 import RadioButtonsPage from "../../pageObjects/RadioButtonsPage";
 import TextBoxPage from "../../pageObjects/textBoxPage";
+import WebTablesPage from "../../pageObjects/WebTablesPage";
 
 context("Elements Page", () => {
   context("Text box scenarios", () => {
@@ -85,7 +86,7 @@ context("Elements Page", () => {
     // noButton - validate that the button exists but is disabled
 
 
-    it.only ("Radio Button Test", () => {
+    it ("Radio Button Test", () => {
       RadioButtonsPage.yesButton.click();
       RadioButtonsPage.message.should("contain", "Yes");
 
@@ -98,13 +99,39 @@ context("Elements Page", () => {
   });
 
   context("Web tables scenarios", () => {
-    // Create WebTables page object
-    // Create scenario 1:
-    // Click add record button
-    // fill in the necessary information
-    // click submit button
-    // search for the user based on previously added information
-    // validate tha the user is visible
+
+
+    beforeEach(() => {
+      WebTablesPage.visit();
+    });
+
+    it.only("Web Tables Test", () => {
+
+      // Create WebTables page object
+      // Create scenario 1:
+      // Click add record button
+      // fill in the necessary information
+      // click submit button
+      // search for the user based on previously added information
+      // validate tha the user is visible
+
+      WebTablesPage.addButton.click();
+      WebTablesPage.firstNameField.type("Kristaps");
+      WebTablesPage.lastNameField.type("Porzingis");
+      WebTablesPage.emailField.type("kpee@nba.com");
+      WebTablesPage.ageField.type(26);
+      WebTablesPage.salaryField.type(10000000);
+      WebTablesPage.departmentField.type("Basketball");
+
+      WebTablesPage.submitButton.click();
+      WebTablesPage.searchBox.type("Kristaps");
+
+      WebTablesPage.firstRow.should("be.visible", "Kristaps");
+
+    });
+
+
+    
 
     // Create Scenario 2:
     // Delete all table rows
